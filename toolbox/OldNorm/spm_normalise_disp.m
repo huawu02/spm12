@@ -9,7 +9,7 @@ function spm_normalise_disp(matname,VF)
 % $Id: spm_normalise_disp.m 4873 2012-08-30 19:06:26Z john $
 
 
-fg = spm_figure('FindWin','Graphics');
+fg = spm_figure('Create','Graphics');
 if isempty(fg), return; end
 
 if nargin<1, matname = spm_select(1,'.*_sn.mat$','Select parameter file'); end

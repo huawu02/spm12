@@ -174,7 +174,10 @@ aflags.sep = max(aflags.sep,max(sqrt(sum(VF(1).mat(1:3,1:3).^2))));
 M         = eye(4); %spm_matrix(prms');
 spm_plot_convergence('Init','Affine Registration','Mean squared difference','Iteration');
 [M,scal]  = spm_affreg(VG1, VF1, aflags, M);
- 
+Affine     = inv(VG(1).mat\M*VF1(1).mat);
+params = struct('Affine',Affine, 'Tr', [], 'VF',VF, 'VG',VG, 'flags',flags);
+spm_normalise_disp(params,VF);
+
 fprintf('Fine Affine Registration..\n');
 aflags.WG  = VWG;
 aflags.WF  = VWF;
@@ -182,6 +185,10 @@ aflags.sep = aflags.sep/2;
 [M,scal]   = spm_affreg(VG1, VF1, aflags, M,scal);
 Affine     = inv(VG(1).mat\M*VF1(1).mat);
 spm_plot_convergence('Clear');
+
+params = struct('Affine',Affine, 'Tr', [], 'VF',VF, 'VG',VG, 'flags',flags);
+if flags.graphics, spm_normalise_disp(params,VF); end;
+spm_normalise_disp(params,VF);
 
 % Basis function Normalisation
 %--------------------------------------------------------------------------
