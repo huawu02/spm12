@@ -1448,11 +1448,11 @@ end
 %-----------------------------------------------------------------------
 function [c0, jobs] = local_initapps(c0, jobs)
 % add application data
-if isdeployed
-    cfg_util_persistent(c0, jobs);
-    cfg_mlbatch_appcfg_master;
-    [c0, jobs] = cfg_util_persistent;
-else
+% if isdeployed
+%     cfg_util_persistent(c0, jobs);
+%     cfg_mlbatch_appcfg_master;
+%     [c0, jobs] = cfg_util_persistent;
+% else
     if exist('OCTAVE_VERSION','builtin')
         % workaround for bug #32088
         appcfgs = file_in_loadpath('cfg_mlbatch_appcfg.m', 'all');
@@ -1496,7 +1496,7 @@ else
         end
     end
     local_cd(cwd);
-end
+% end
 %-----------------------------------------------------------------------
 
 %-----------------------------------------------------------------------

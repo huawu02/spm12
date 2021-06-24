@@ -205,11 +205,11 @@ end
 def = defaults;
 user_defaults = 'spm_my_defaults.m';
 if exist(user_defaults,'file')
-    if isdeployed && exist(fullfile(spm('Dir'),user_defaults),'file')
-        user_defaults_file = cellstr(fullfile(spm('Dir'),user_defaults));
-    else
+%     if isdeployed && exist(fullfile(spm('Dir'),user_defaults),'file')
+%         user_defaults_file = cellstr(fullfile(spm('Dir'),user_defaults));
+%     else
         user_defaults_file = cellstr(which(user_defaults,'-ALL'));
-    end
+%     end
     for i=1:numel(user_defaults_file)
         try
             spm('run', user_defaults_file{i});

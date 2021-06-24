@@ -78,11 +78,11 @@ tools.help   = {'Other tools.', ...
                  'for information about the form of SPM''s configuration ' ...
                  'files.']};
 tools.values = {};
-if isdeployed
-    %-In compiled mode, cfg_master will take care of toolbox detection
-    % See spm_make_standalone.m
-    tools.values = spm_cfg_static_tools;
-else
+% if isdeployed
+%     %-In compiled mode, cfg_master will take care of toolbox detection
+%     % See spm_make_standalone.m
+%     tools.values = spm_cfg_static_tools;
+% else
     %-Toolbox directories autodetection
     tbxdir = spm_get_defaults('tbx.dir');
     for i=1:numel(tbxdir)
@@ -114,7 +114,7 @@ else
         end
         cd(cwd);
     end
-end
+% end
 
 %==========================================================================
 % spmjobs SPM

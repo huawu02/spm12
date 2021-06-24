@@ -1241,13 +1241,13 @@ v = SPM_VER;
 if isempty(SPM_VER) || (nargin > 0 && ReDo)
     v = struct('Name','','Version','','Release','','Date','');
     try
-        if isdeployed
-            % in deployed mode, M-files are encrypted
-            % (even if first two lines of Contents.m "should" be preserved)
-            vfile = fullfile(spm('Dir'),'Contents.txt');
-        else
+%         if isdeployed
+%             % in deployed mode, M-files are encrypted
+%             % (even if first two lines of Contents.m "should" be preserved)
+%             vfile = fullfile(spm('Dir'),'Contents.txt');
+%         else
             vfile = fullfile(spm('Dir'),'Contents.m');
-        end
+%         end
         fid = fopen(vfile,'rt');
         if fid == -1, error('Can''t open %s.',vfile); end
         l1 = fgetl(fid); l2 = fgetl(fid);

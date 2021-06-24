@@ -49,11 +49,11 @@ switch ext
     case '.m'
         try
             str = fileread(filename);
-            if isdeployed && strncmp(str,'V1MCC',5) % mcc compiled script
-                eval(nam);
-            else
+%             if isdeployed && strncmp(str,'V1MCC',5) % mcc compiled script
+%                 eval(nam);
+%             else
                 eval(str);
-            end
+%             end
         catch
             cfg_message('matlabbatch:initialise:m','Eval failed: ''%s''',filename);
         end
